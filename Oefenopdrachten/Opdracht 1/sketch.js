@@ -36,7 +36,7 @@ function draw() {
          fill("red")
            rect (245,204,160,100)
            fill("black")
-             rect (324,204,165,100)
+             rect (332,204,165,100)
              fill("blue")
              rect (489,204,116,100)
              rect (244,304,247,100)
