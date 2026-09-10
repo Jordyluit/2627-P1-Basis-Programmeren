@@ -40,5 +40,6 @@ function draw() {
              fill("blue")
              rect (489,204,116,100)
              rect (244,304,247,100)
+
          
 }
