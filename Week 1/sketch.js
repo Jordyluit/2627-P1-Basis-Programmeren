@@ -120,7 +120,7 @@ fill("yellow");
 square(725,275,25);
 square(800,275,25);
 fill("black")
-text("7.",625,50)
+text("7. Mario",550,50)
 
 //Yoshi
 //green
@@ -180,7 +180,7 @@ rect(600,775,25,50);
 rect(625,800,25,50);
 
 fill("black")
-text("8.",600,650)
+text("8.Yoshi",525,650)
 
 //album cover
  fill("black");
