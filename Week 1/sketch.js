@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(1100, 1100);
+  createCanvas(4000, 4000);
 
 
 
@@ -181,4 +181,37 @@ rect(625,800,25,50);
 
 fill("black")
 text("8.",600,650)
+
+//album cover
+ fill("black");
+ square(0,1050,700);
+ fill("transparency");
+ circle(350,1400,550);
+ fill("black");
+ circle(350,1400,500);
+ fill("white");
+ circle(350,1400,450);
+ fill("black")
+  circle(350,1400,400);
+  fill("white");
+   circle(350,1400,350);
+   fill("black");
+    circle(350,1400,300);
+    fill("white")
+     circle(350,1400,250);
+     fill("black");
+      circle(350,1400,200);
+      fill("white");
+       circle(350,1400,150);
+       fill("black");
+        circle(350,1400,100);
+        fill("white")
+         circle(350,1400,50);
+fill("red");
+ textSize(800);
+ text("Y",85,1700);
+ fill("red");
+ textSize(70);
+ text("Teach me to fight",85,1100);
+
 }
