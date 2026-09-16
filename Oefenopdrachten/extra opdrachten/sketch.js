@@ -1,12 +1,16 @@
-let speed = 2;
-let X = 50;
 function setup() {
-  createCanvas(1100, 1100);
+  createCanvas(100, 100);
+
+  describe("A gray square. The mouse's x- and y-coordinates are displayed as the user moves the mouse.");
 }
 
-function draw(){
- background (220);
+function draw() {
+  background(200);
 
-circle(X,20,50);
-X += speed;
+  // Style the text.
+  textAlign(CENTER);
+  textSize(16);
+
+  // Display the mouse's coordinates.
+  text(`x: ${int(mouseX)} y: ${int(mouseY)}`, 50, 50);
 }
