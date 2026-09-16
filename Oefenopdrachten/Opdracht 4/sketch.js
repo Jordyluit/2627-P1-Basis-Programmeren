@@ -172,7 +172,13 @@ function draw() {
 if (ballx >=1050){
   ballx = -50
   }
-if (ballx = -100){
-  ballx = 1100
+if (ballx <= -60){
+  ballx = 1050
+}
+if (bally >=850){
+  bally = -50
+}
+if (bally <=-60){
+  bally = 850
 }
 }
