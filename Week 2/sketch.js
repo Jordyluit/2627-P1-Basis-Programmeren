@@ -1,9 +1,13 @@
 let RichtingZon = 2
 let ZonXPositie = 60
+let maanXPositie = -60
+let richtingMaan = 2
 let licht = 675
 let color = "red"
 let colororange = "orange"
 let colorgreen = "green"
+let autoX1Positie = 0
+let auto1Speed = 3
 function setup() {
   createCanvas(800, 600);
 }
@@ -46,7 +50,7 @@ function draw() {
   background("Lightblue");
 
 
-  //zon
+  //zon en maan
 
   fill("#FFD700")
   circle(ZonXPositie, 50, 75)
@@ -93,19 +97,38 @@ function draw() {
   rect(700, 490, 50, 25)
   rect(800, 490, 50, 25)
 
+  //auto1
+  fill("orange")
+  rect(20 + autoX1Positie,490,100,50)
+  fill("lightblue")
+  rect(75 + autoX1Positie,500,45,20)
+  fill("black")
+  circle(40 + autoX1Positie,540,25)
+  circle(100 + autoX1Positie,540,25)
+    if (autoX1Positie >=775)
+    autoX1Positie = -200
+  autoX1Positie = autoX1Positie + auto1Speed
+
+  
+
   //verkeerslicht
   fill("grey")
   rect(650, 200, 50, 150);
   rect(660, 350, 30, 100);
 
 
-  fill(color)
+  fill(color); {
   circle(licht, 230, 40)
+  
+  }
 
 
-  fill(colorgreen)
-  circle(licht, 320, 40)
-
-  fill(colororange)
+  fill(colorgreen); {
+  circle(licht, 320, 40);
+  }
+  fill(colororange); {
   circle(licht, 275, 40)
+  }
+  
 }
+
