@@ -1,7 +1,7 @@
-let RichtingZon = 2
+let RichtingZon = 1/2
 let ZonXPositie = 60
-let maanXPositie = -60
-let richtingMaan = 2
+let maanXPositie = -800
+let richtingMaan = 1/2
 let licht = 675
 let color = "red"
 let colororange = "orange"
@@ -46,6 +46,7 @@ function keyPressed() {
   console.log(colororange)
 
 }
+
 function draw() {
   background("Lightblue");
 
@@ -55,10 +56,21 @@ function draw() {
   fill("#FFD700")
   circle(ZonXPositie, 50, 75)
   ZonXPositie = ZonXPositie + RichtingZon
+  maanXPositie = maanXPositie + richtingMaan
 
-  if (ZonXPositie > 830) {
-    ZonXPositie = 0
+fill("#D6D6D6")
+  circle(maanXPositie,50,75)
+
+  if(ZonXPositie >= 1660){
+    ZonXPositie = -60
   }
+  if (maanXPositie >= 1660){
+    maanXPositie = -60
+  }
+
+  
+
+
 
 
 
@@ -99,17 +111,17 @@ function draw() {
 
   //auto1
   fill("orange")
-  rect(20 + autoX1Positie,490,100,50)
+  rect(20 + autoX1Positie, 490, 100, 50)
   fill("lightblue")
-  rect(75 + autoX1Positie,500,45,20)
+  rect(75 + autoX1Positie, 500, 45, 20)
   fill("black")
-  circle(40 + autoX1Positie,540,25)
-  circle(100 + autoX1Positie,540,25)
-    if (autoX1Positie >=775)
+  circle(40 + autoX1Positie, 540, 25)
+  circle(100 + autoX1Positie, 540, 25)
+  if (autoX1Positie >= 775)
     autoX1Positie = -200
-  autoX1Positie = autoX1Positie + auto1Speed
 
-  
+
+
 
   //verkeerslicht
   fill("grey")
@@ -118,17 +130,22 @@ function draw() {
 
 
   fill(color); {
-  circle(licht, 230, 40)
-  
+    circle(licht, 230, 40)
+
   }
 
 
   fill(colorgreen); {
-  circle(licht, 320, 40);
+    circle(licht, 320, 40);
+
+    autoX1Positie = autoX1Positie + auto1Speed
+
   }
+
   fill(colororange); {
-  circle(licht, 275, 40)
+    circle(licht, 275, 40)
+
   }
-  
+
 }
 

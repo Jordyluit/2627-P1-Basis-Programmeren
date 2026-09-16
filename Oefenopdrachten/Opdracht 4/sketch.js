@@ -147,7 +147,7 @@ function draw() {
   }
   else if (keyIsPressed) {
     if (keyCode == 32) {
-      teller = 0
+      teller = -1
     }
   }
 
