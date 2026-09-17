@@ -11,11 +11,11 @@ const GREEN = 2;
 
 let car1X = 0
 let car2X = 300;
-let car3X = 500;
+let car3X = 200;
 
 let car1Speed = 3
-let car2Speed = 2;
-let car3Speed = 4;
+let car2Speed = 3;
+let car3Speed = -6;
 
 
 let groen = false
@@ -93,6 +93,16 @@ fill("#D6D6D6")
   rect(700, 490, 50, 25)
   rect(800, 490, 50, 25)
 
+ //auto 3
+  fill("yellow")
+  rect(50+car3X,370,200,100)
+  fill("lightblue")
+  rect(50+ car3X,370,25,50)
+  fill("black")
+  circle(70+ car3X,470,50)
+   circle(230+ car3X,470,50)
+  if (car3X <= -300)
+    car3X= 775
   //auto1
   fill("orange")
   rect(20 + car1X, 490, 100, 50)
@@ -104,9 +114,22 @@ fill("#D6D6D6")
   if (car1X >= 775)
     car1X = -200
 
+  //auto 2
 
-console.log('car1x = ' + car1X)
+  strokeWeight (0)
+  fill("pink")
+  rect(40+ car2X, 490,150,50)
+  rect(40 + car2X, 440,75,50)
+  fill("lightblue")
+  rect(115 + car2X, 440,75,50)
+  fill("black")
+  circle(60 + car2X,540,25) 
+  circle(170 + car2X,540,25)
+  if (car2X >= 775)
+car2X =-200
 
+
+ 
  
 //TrafficLight
   // Pole
@@ -148,14 +171,14 @@ function moveCars() {
   if (trafficLight === GREEN) {
     console.log('hiero')
     car1X += car1Speed;
-    // car2X += car2Speed;
-    // car3X += car3Speed;
+    car2X += car2Speed;
+    car3X += car3Speed;
   }
 
   if (trafficLight === ORANGE) {
     car1X += car1Speed * 0.5;
-    // car2X += car2Speed * 0.5;
-    // car3X += car3Speed * 0.5;
+    car2X += car2Speed * 0.5;
+    car3X += car3Speed * 0.5;
   }
 
   // if (car1X > width + 150) {
