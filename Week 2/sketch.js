@@ -1,57 +1,40 @@
-let RichtingZon = 1/2
+let RichtingZon = 1/2 
 let ZonXPositie = 60
 let maanXPositie = -800
 let richtingMaan = 1/2
-let licht = 675
-let color = "red"
-let colororange = "orange"
-let colorgreen = "green"
-let autoX1Positie = 0
-let auto1Speed = 3
+
+let trafficLight = 0;
+const RED = 0;
+const ORANGE = 1;
+const GREEN = 2;
+
+
+let car1X = 0
+let car2X = 300;
+let car3X = 500;
+
+let car1Speed = 3
+let car2Speed = 2;
+let car3Speed = 4;
+
+
+let groen = false
 function setup() {
   createCanvas(800, 600);
 }
 
-function keyPressed() {
-  //verkeerslicht
-  if (keyCode == 13) {
-    if (color === "red") {
-      color = "black"
-    }
-    else if (colororange === "orange") {
-
-      color = "red"
-    }
-  }
-  console.log(color)
-  if (keyCode == 13) {
-    if (colorgreen === "green") {
-      colorgreen = "black"
-
-    }
-    else if (colorgreen === color) {
-      colorgreen = "green"
-    }
-  }
-  console.log(colorgreen)
-  if (keyCode == 13) {
-    if (colororange === "orange") {
-      colororange = "black"
-    }
-
-    else if (colororange === colorgreen) {
-      colororange = "orange"
-    }
-  }
-  console.log(colororange)
-
-}
 
 function draw() {
   background("Lightblue");
+ //zon en maan
+  if (ZonXPositie >= 860){
+    background("#191970")
+  }
+if (maanXPositie >= 960){
+  background("lightblue")
+}
 
-
-  //zon en maan
+ 
 
   fill("#FFD700")
   circle(ZonXPositie, 50, 75)
@@ -61,13 +44,13 @@ function draw() {
 fill("#D6D6D6")
   circle(maanXPositie,50,75)
 
-  if(ZonXPositie >= 1660){
+  if(ZonXPositie >= 1760){
     ZonXPositie = -60
   }
-  if (maanXPositie >= 1660){
+  if (maanXPositie >= 1760){
     maanXPositie = -60
   }
-
+  
   
 
 
@@ -111,41 +94,93 @@ fill("#D6D6D6")
 
   //auto1
   fill("orange")
-  rect(20 + autoX1Positie, 490, 100, 50)
+  rect(20 + car1X, 490, 100, 50)
   fill("lightblue")
-  rect(75 + autoX1Positie, 500, 45, 20)
+  rect(75 + car1X, 500, 45, 20)
   fill("black")
-  circle(40 + autoX1Positie, 540, 25)
-  circle(100 + autoX1Positie, 540, 25)
-  if (autoX1Positie >= 775)
-    autoX1Positie = -200
+  circle(40 + car1X, 540, 25)
+  circle(100 + car1X, 540, 25)
+  if (car1X >= 775)
+    car1X = -200
 
 
 
 
-  //verkeerslicht
-  fill("grey")
-  rect(650, 200, 50, 150);
-  rect(660, 350, 30, 100);
+ 
+//TrafficLight
+  // Pole
+  fill(60);
+  rect(735, 250, 10, 200);
 
+  // Traffic light box
+  fill(40);
+  rect(700, 180, 80, 170);
 
-  fill(color); {
-    circle(licht, 230, 40)
-
+  // RED LIGHT
+  if (trafficLight === RED) {
+    fill(255, 0, 0);
+  } else {
+    fill(80);
   }
 
+  circle(740, 215, 40);
 
-  fill(colorgreen); {
-    circle(licht, 320, 40);
-
-    autoX1Positie = autoX1Positie + auto1Speed
-
+  // ORANGE LIGHT
+  if (trafficLight === ORANGE) {
+    fill(255, 165, 0);
+  } else {
+    fill(80);
   }
 
-  fill(colororange); {
-    circle(licht, 275, 40)
+  circle(740, 265, 40);
+// GREEN LIGHT
+  if (trafficLight === GREEN) {
+    fill(0, 255, 0);
+  } else {
+    fill(80);
+  }
 
+  circle(740, 315, 40);
+}
+function moveCars() {
+
+  if (trafficLight === GREEN) {
+    car1X += car1Speed;
+    // car2X += car2Speed;
+    // car3X += car3Speed;
+  }
+
+  if (trafficLight === ORANGE) {
+    car1X += car1Speed * 0.5;
+    // car2X += car2Speed * 0.5;
+    // car3X += car3Speed * 0.5;
+  }
+
+  if (car1X > width + 150) {
+    car1X = -150;
+  }
+
+  // if (car2X > width + 150) {
+  //   car2X = -150;
+  // }
+
+  // if (car3X > width + 150) {
+  //   car3X = -150;
+  // }
+}
+function keyPressed() {
+  if (keyCode === ENTER) {
+
+    // RED -> GREEN -> ORANGE -> RED
+    if (trafficLight === RED) {
+      trafficLight = GREEN;
+    } 
+    else if (trafficLight === GREEN) {
+      trafficLight = ORANGE;
+    } 
+    else {
+      trafficLight = RED;
+    }
   }
 
 }
-
