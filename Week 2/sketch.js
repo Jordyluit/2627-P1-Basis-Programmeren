@@ -1,4 +1,4 @@
-let RichtingZon = 1/2 
+let RichtingZon = 1/2
 let ZonXPositie = 60
 let maanXPositie = -800
 let richtingMaan = 1/2
@@ -25,6 +25,7 @@ function setup() {
 
 
 function draw() {
+  moveCars();
   background("Lightblue");
  //zon en maan
   if (ZonXPositie >= 860){
@@ -104,7 +105,7 @@ fill("#D6D6D6")
     car1X = -200
 
 
-
+console.log('car1x = ' + car1X)
 
  
 //TrafficLight
@@ -145,6 +146,7 @@ fill("#D6D6D6")
 function moveCars() {
 
   if (trafficLight === GREEN) {
+    console.log('hiero')
     car1X += car1Speed;
     // car2X += car2Speed;
     // car3X += car3Speed;
@@ -156,9 +158,9 @@ function moveCars() {
     // car3X += car3Speed * 0.5;
   }
 
-  if (car1X > width + 150) {
-    car1X = -150;
-  }
+  // if (car1X > width + 150) {
+  //   car1X = -150;
+  // }
 
   // if (car2X > width + 150) {
   //   car2X = -150;
