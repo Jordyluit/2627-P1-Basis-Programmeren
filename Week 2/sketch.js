@@ -27,7 +27,7 @@ let wolk3X = 0
 let wolk3Snelheid = -1
 
 
-let groen = false
+// let groen = false
 function setup() {
   createCanvas(800, 600);
 }
@@ -44,7 +44,10 @@ if (maanXPositie >= 960){
   background("lightblue")
 }
 
- 
+//  if (background ==="#191970")
+// {fill("green")
+// circle(90,90,90)
+// }
 
   fill("#FFD700")
   circle(ZonXPositie, 50, 75)
@@ -146,16 +149,22 @@ fill("#D6D6D6")
    circle(230+ car3X,470,50,)
   if (car3X <= -300)
     car3X= 775
+  fill("#00ddff")
+  square (50+car3X,430,10)
+
   //auto1
   fill("orange")
   rect(20 + car1X, 490, 100, 50,90)
   fill("lightblue")
-  rect(75 + car1X, 500, 45, 20,90)
+  rect(70 + car1X, 490, 45, 20,90)
   fill("black")
   circle(40 + car1X, 540, 25)
   circle(100 + car1X, 540, 25)
+  fill("#00ddff")
+  circle(115+ car1X, 520,10)
   if (car1X >= 775)
     car1X = -200
+  
 
   //auto 2
 
@@ -170,6 +179,8 @@ fill("#D6D6D6")
   circle(170 + car2X,540,25)
   if (car2X >= 775)
 car2X =-200
+  fill("#00ddff")
+  square(180+car2X,500,10)
 
   //wolken
 
