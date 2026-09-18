@@ -43,12 +43,49 @@ function draw() {
 if (maanXPositie >= 960){
   background("lightblue")
 }
-
-//  if (background ==="#191970")
-// {fill("green")
-// circle(90,90,90)
-// }
-
+//sterren
+ if (ZonXPositie >= 860)
+{fill("#ffd700")
+circle(100,90,5)
+circle(90,100,5)
+circle(87,113,5)
+circle(220,115,5)
+circle(650,150,5)
+circle(332,112,5)
+circle(508,70,5)
+circle(403,64,5)
+circle(439,32,5)
+circle(349,10,5)
+circle(309,90,5)
+circle(201,76,5)
+circle(190,102,5)
+circle(5,55,5)
+circle(705,83,5)
+circle(640,90,5)
+circle(790,83,5)
+circle(736,143,5)
+circle(587,110,5)
+circle(124,98,5)
+circle(36,93,5)
+circle(527,76,5)
+circle(422,62,5)
+circle(590,53,5)
+circle(490,48,5)
+circle(690,42,5)
+circle(770,110,5)
+circle(123,17,5)
+circle(739,21,5)
+circle(654,56,5)
+circle(456,98,5)
+circle(309,123,5)
+circle(560,142,5)
+circle(645,66,5)
+circle(496,74,5)
+circle(576,32,5)
+}
+else if (maanXPositie >=960)(
+  removeElements(circle)
+)
   fill("#FFD700")
   circle(ZonXPositie, 50, 75)
   ZonXPositie = ZonXPositie + RichtingZon
@@ -125,6 +162,45 @@ fill("#D6D6D6")
   }
 
   circle(740, 315, 40);
+
+  //Boom 1
+  fill("brown")
+  rect(50,350,25,150)
+  fill("green")
+  circle (62,325,100)
+
+  //boom 2
+  fill("brown")
+  rect(170,350,25,150)
+  fill("green")
+  circle (182,325,100)
+
+  //boom 3
+    fill("brown")
+  rect(290,350,25,150)
+  fill("green")
+  circle (302,325,100)
+
+  //boom 4
+    fill("brown")
+  rect(410,350,25,150)
+  fill("green")
+  circle (422,325,100)
+
+  //boom 5
+    fill("brown")
+  rect(530,350,25,150)
+  fill("green")
+  circle (542,325,100)
+
+  //boom 6
+    fill("brown")
+  rect(638,350,25,150)
+  fill("green")
+  circle (650,325,100)
+
+
+
      //snelweg
   fill("grey")
   rect(0, 450, 800, 100)
@@ -147,11 +223,16 @@ fill("#D6D6D6")
   fill("black")
   circle(70+ car3X,470,50)
    circle(230+ car3X,470,50,)
-  if (car3X <= -300)
-    car3X= 775
-  fill("#00ddff")
+  if (car3X <= -300){
+    car3X= 775}
+   fill("#00ddff")
   square (50+car3X,430,10)
-
+  fill(255, 255, 220)
+  if (ZonXPositie >=860){ 
+  triangle(50+car3X,430,car3X,450,50+car3X,440)
+ fill(255, 255, 220)
+ square(50+ car3X,430,10)
+  }
   //auto1
   fill("orange")
   rect(20 + car1X, 490, 100, 50,90)
@@ -162,8 +243,12 @@ fill("#D6D6D6")
   circle(100 + car1X, 540, 25)
   fill("#00ddff")
   circle(115+ car1X, 520,10)
-  if (car1X >= 775)
-    car1X = -200
+  if (car1X >= 775){
+    car1X = -200}
+fill(255,255,220)
+if (ZonXPositie >= 860){
+triangle(150+car1X, 525, 120+car1X, 515, 120+car1X, 525)
+circle(115+ car1X, 520,10)}
   
 
   //auto 2
@@ -181,6 +266,23 @@ fill("#D6D6D6")
 car2X =-200
   fill("#00ddff")
   square(180+car2X,500,10)
+  if (ZonXPositie >= 860){
+  fill(255,255,220)
+  triangle(260+car2X, 530, 190+car2X, 500, 190+car2X, 510)
+  square(180+car2X,500,10)
+}
+
+//Boom 7
+  fill("brown")
+  rect(100,500,25,150)
+  fill("green")
+  circle (112,475,100)
+
+  //boom 8
+   fill("brown")
+  rect(300,500,25,150)
+  fill("green")
+  circle (312,475,100)
 
   //wolken
 
