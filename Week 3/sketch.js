@@ -23,19 +23,11 @@ function setup() {
 }
 function mousePressed(){
   if (mouseButton == LEFT)
-    player ++
-    console.log("Linker Muisknop")
-}
-
-function draw() {
-  background("lightblue");
-
-if(player >= 3){
+    player++
+    if(player >= 3){
   player = 1
 }
-
-//logic
-//Box1
+  //Box1
 if (mouseIsPressed === true && player == 1 && Box1 == "grey" &&
   mouseX > RectX1 && mouseX < RectX1 + RectW &&
   mouseY > RectY1 && mouseY < RectY1 + RectH 
@@ -143,6 +135,15 @@ if (mouseIsPressed === true && player == 1 && Box9 == "grey" &&
   mouseY > RectY3 && mouseY < RectY3 + RectH){
   Box9 = "red"
 }
+    console.log("Linker Muisknop")
+}
+
+function draw() {
+  background("lightblue");
+
+
+//logic
+
 
   strokeWeight(0)
   fill(Box1)
@@ -181,7 +182,7 @@ if (mouseIsPressed === true && player == 1 && Box9 == "grey" &&
   rect (RectX3,RectY3, RectW,RectH)
 
   //Duidelijk cursor
-  fill("grey")
+  fill("yellow")
   circle(mouseX,mouseY,50)
 
 
