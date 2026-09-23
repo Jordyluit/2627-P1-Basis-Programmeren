@@ -276,11 +276,11 @@ RectY = RectH *2.75 + RectB;
     Box1 == Box3
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+     
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+    
      }
       textSize(60)
       fill("black")
@@ -291,11 +291,11 @@ RectY = RectH *2.75 + RectB;
     Box1 == Box7
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+     
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+    
      }
       textSize(60)
       fill("black")
@@ -306,11 +306,11 @@ RectY = RectH *2.75 + RectB;
     Box1 == Box9
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+   
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+   
      }
       textSize(60)
       fill("black")
@@ -321,11 +321,11 @@ RectY = RectH *2.75 + RectB;
     Box2 == Box8
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+      
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+     
      }
       textSize(60)
       fill("black")
@@ -398,7 +398,7 @@ RectY = RectH *2.75 + RectB;
         fill("black")
         text ("It's a draw!",200,200)
       }
-  
+
     //mouse cursor
     fill("yellow")
     circle(mouseX,mouseY,50)
