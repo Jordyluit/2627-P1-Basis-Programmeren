@@ -1,213 +1,261 @@
-let player = 1
-let RectX1 = 100
-let RectX2 = 255
-let RectX3 = 410
-let RectY1 = 100
-let RectY2 = 255
-let RectY3 = 410
+let Player = 1
+// let RectX1 = 100
+// let RectX2 = 255
+// let RectX3 = 410
+// let RectY1 = 100
+// let RectY2 = 255
+// let RectY3 = 410
 let RectW = 150
 let RectH = 150
-let Box1 = "grey"
-let Box2 = "grey"
-let Box3 = "grey"
-let Box4 = "grey"
-let Box5 = "grey"
-let Box6 = "grey"
-let Box7 = "grey"
-let Box8 = "grey"
-let Box9 = "grey"
+let RectB = 10
+let Box1 = 0
+let Box2 = 0
+let Box3 = 0
+let Box4 = 0
+let Box5 = 0
+let Box6 = 0
+let Box7 = 0
+let Box8 = 0
+let Box9 = 0
+let Win = 0
+let winner = 0;
+
+
 
 
 function setup() {
   createCanvas(1000, 1000);
 }
+
 function mousePressed(){
-  if (mouseButton == LEFT)
-   
-    if(player >= 3){
-  player = 1
-}
-  //Box1
-if (mouseIsPressed === true && player == 1 && Box1 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH 
-){
-  Box1 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box1 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH){
-     Box1 = "red"
-   player++
+  if (mouseButton == LEFT && Win == 0){
+    console.log("Linker Muisknop")
 
-     //Box2
-  }if (mouseIsPressed === true && player == 1 && Box2 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH 
+let RectX = 100
+let RectY = 100
+
+
+if (Box1 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box2 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box2 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH){
-     Box2 = "red"
-     player++
+  Box1 = Player;
+  Player++
 }
 
-//Box3
-if (mouseIsPressed === true && player == 1 && Box3 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH 
+RectX += RectW + RectB;
+if (Box2 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box3 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box3 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY1 && mouseY < RectY1 + RectH){
-  Box3 = "red"
-  player++
+  Box2 = Player;
+  Player++
 }
 
-//Box4
-if (mouseIsPressed === true && player == 1 && Box4 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH 
+RectX += RectW + RectB;
+if (Box3 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box4 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box4 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH){
-  Box4 = "red"
-  player++
+  Box3 = Player;
+  Player++
 }
 
-//Box5
+ RectX = 100;
+ RectY += RectH + RectB;
 
-if (mouseIsPressed === true && player == 1 && Box5 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH 
+ if (Box4 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box5 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box5 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH){
-  Box5 = "red"
-  player++
+  Box4 = Player;
+  Player++
 }
 
-
-//Box6
-if (mouseIsPressed === true && player == 1 && Box6 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH 
+RectX += RectW + RectB;
+if (Box5 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box6 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box6 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY2 && mouseY < RectY2 + RectH){
-  Box6 = "red"
-  player++
+  Box5 = Player;
+  Player++
 }
 
-//Box7
-if (mouseIsPressed === true && player == 1 && Box7 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH 
+RectX += RectW + RectB;
+if (Box6 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box7 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box7 == "grey" &&
-  mouseX > RectX1 && mouseX < RectX1 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH){
-  Box7 = "red"
-  player++
+  Box6 = Player;
+  Player++
 }
 
-//Box8
-if (mouseIsPressed === true && player == 1 && Box8 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH 
+ RectX = 100;
+ RectY += RectH + RectB;
+
+  if (Box7 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box8 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box8 == "grey" &&
-  mouseX > RectX2 && mouseX < RectX2 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH){
-  Box8 = "red"
-  player++
+  Box7 = Player;
+  Player++
 }
 
-//Box9
-if (mouseIsPressed === true && player == 1 && Box9 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH 
+RectX += RectW + RectB;
+if (Box8 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
 ){
-  Box9 = "green"
-  player++
-}else if(mouseIsPressed === true && player == 2  && Box9 == "grey" &&
-  mouseX > RectX3 && mouseX < RectX3 + RectW &&
-  mouseY > RectY3 && mouseY < RectY3 + RectH){
-  Box9 = "red"
-  player++
+  Box8 = Player;
+  Player++
 }
-if(Box1 && Box2 && Box3 && Box4 && Box5 && Box6 && Box7 && Box8 && Box9 == 'red' || 'blue'){
-  Box1 && Box2 && Box3 && Box4 && Box5 && Box6 && Box7 && Box8 && Box9 == 'grey'}
 
-console.log("Linker Muisknop")
-    
+RectX += RectW + RectB;
+if (Box9 == 0 &&
+  mouseX > RectX && mouseX < RectX + RectW &&
+  mouseY > RectY && mouseY < RectY + RectH 
+){
+  Box9 = Player;
+  Player++
+}
+  }
+      if (Player > 2){
+  Player = 1
+}
+console.log(Player)
 }
 
 function draw() {
-  background("lightblue");
+  background(190);
+let RectX = 100
+let RectY = 100
 
 
+strokeWeight(0)
+  if(Box1 == 1) {
+    fill("blue")
+  } else if (Box1 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
 
+
+  RectX += RectW + RectB;
+  strokeWeight(0)
+   if(Box2 == 1) {
+    fill("blue")
+  } else if (Box2 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
+
+
+  RectX += RectW + RectB;
+  strokeWeight(0)
+    if(Box3 == 1) {
+    fill("blue")
+  } else if (Box3 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
+
+  
+RectX = 100
+RectY += RectH+ RectB;
+
+  strokeWeight(0)
+    if(Box4 == 1) {
+    fill("blue")
+  } else if (Box4 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
+
+
+  RectX += RectW + RectB;
+  strokeWeight(0)
+    if(Box5 == 1) {
+    fill("blue")
+  } else if (Box5 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
+
+
+  RectX += RectW + RectB;
+  strokeWeight(0)
+    if(Box6 == 1) {
+    fill("blue")
+  } else if (Box6 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
+
+RectX = 100
+RectY = RectH *2.75 + RectB;
 
 
   strokeWeight(0)
-  fill(Box1)
-  rect (RectX1,RectY1, RectW,RectH)
+    if(Box7 == 1) {
+    fill("blue")
+  } else if (Box7 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
 
+
+  RectX += RectW + RectB;
   strokeWeight(0)
-  fill(Box2)
-  rect (RectX2,RectY1, RectW,RectH)
+    if(Box8 == 1) {
+    fill("blue")
+  } else if (Box8 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
 
+
+  RectX += RectW + RectB;
   strokeWeight(0)
-  fill(Box3)
-  rect (RectX3,RectY1, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box4)
-  rect (RectX1,RectY2, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box5)
-  rect (RectX2,RectY2, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box6)
-  rect (RectX3,RectY2, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box7)
-  rect (RectX1,RectY3, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box8)
-  rect (RectX2,RectY3, RectW,RectH)
-
-  strokeWeight(0)
-  fill(Box9)
-  rect (RectX3,RectY3, RectW,RectH)
-
-  //Duidelijk cursor
-  fill("yellow")
-  circle(mouseX,mouseY,50)
+    if(Box9 == 1) {
+    fill("blue")
+  } else if (Box9 == 2) {
+    fill("red");
+  } else {
+    fill("grey");
+  }
+  rect (RectX,RectY, RectW,RectH)
 
 
-
-
-}
+  if (Box1 != 0 &&
+    Box1 == Box2 &&
+    Box1 == Box3||
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+   
+  }
