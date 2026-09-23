@@ -336,11 +336,11 @@ RectY = RectH *2.75 + RectB;
     Box3 == Box9
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+      
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+
      }
       textSize(60)
       fill("black")
@@ -351,11 +351,11 @@ RectY = RectH *2.75 + RectB;
     Box3 == Box7
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+      
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+    
      }
       textSize(60)
       fill("black")
@@ -366,11 +366,11 @@ RectY = RectH *2.75 + RectB;
     Box4 == Box6
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+      
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+      
      }
       textSize(60)
       fill("black")
@@ -381,11 +381,11 @@ RectY = RectH *2.75 + RectB;
     Box7 == Box9
   ){
      if (Player == 1) {
-      winner += 2;
-      noLoop();
+      winner = 2;
+    
      } else if (Player == 2) {
-      winner += 1;
-      noLoop();
+      winner = 1;
+   
      }
       textSize(60)
       fill("black")
