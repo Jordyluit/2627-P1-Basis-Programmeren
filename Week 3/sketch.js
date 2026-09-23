@@ -19,6 +19,11 @@ let Box8 = 0
 let Box9 = 0
 let Win = 0
 let winner = 0;
+let reset = 0
+let ButtonX = 260
+let ButtonY = 600
+let ButtonW = 150
+let ButtonH = 50
 
 
 
@@ -33,6 +38,8 @@ function mousePressed(){
 
 let RectX = 100
 let RectY = 100
+
+
 
 
 if (Box1 == 0 &&
@@ -123,6 +130,20 @@ if (Box9 == 0 &&
   Player = 1
 }
 console.log(Player)
+if (reset == 0 &&
+    mouseX > ButtonX && mouseX < ButtonX + ButtonW  &&
+    mouseY > ButtonY && mouseY < ButtonY + ButtonH) {
+    Box1 = 0
+    Box2 = 0
+    Box3 = 0
+    Box4 = 0
+    Box5 = 0
+    Box6 = 0
+    Box7 = 0
+    Box8 = 0
+    Box9 = 0
+  }
+console.log("reset " + reset)
 }
 
 function draw() {
@@ -130,6 +151,14 @@ function draw() {
 let RectX = 100
 let RectY = 100
 
+
+
+
+fill("white")
+rect(ButtonX,ButtonY,ButtonW,ButtonH)
+textSize(45)
+fill("black")
+text("reset",280,640)
 
 strokeWeight(0)
   if(Box1 == 1) {
@@ -241,10 +270,10 @@ RectY = RectH *2.75 + RectB;
   }
   rect (RectX,RectY, RectW,RectH)
 
-
+    
   if (Box1 != 0 &&
     Box1 == Box2 &&
-    Box1 == Box3||
+    Box1 == Box3
   ){
      if (Player == 1) {
       winner += 2;
@@ -257,5 +286,120 @@ RectY = RectH *2.75 + RectB;
       fill("black")
       text ("Player " + winner + " wins",200,200)
     }
-   
-  }
+     if (Box1 != 0 &&
+    Box1 == Box4 &&
+    Box1 == Box7
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+      if (Box1 != 0 &&
+    Box1 == Box5 &&
+    Box1 == Box9
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+        if (Box2 != 0 &&
+    Box2 == Box5 &&
+    Box2 == Box8
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+        if (Box3 != 0 &&
+    Box3 == Box6 &&
+    Box3 == Box9
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+        if (Box3 != 0 &&
+    Box3 == Box5 &&
+    Box3 == Box7
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+        if (Box4 != 0 &&
+    Box4 == Box5 &&
+    Box4 == Box6
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+        if (Box7 != 0 &&
+    Box7 == Box8 &&
+    Box7 == Box9
+  ){
+     if (Player == 1) {
+      winner += 2;
+      noLoop();
+     } else if (Player == 2) {
+      winner += 1;
+      noLoop();
+     }
+      textSize(60)
+      fill("black")
+      text ("Player " + winner + " wins",200,200)
+    }
+
+
+      if (Box1 != 0 && Box2 != 0 && Box3 != 0 && Box4 != 0 && Box5 != 0 && Box6 != 0 && Box7 != 0 && Box8 != 0 && Box9 != 0) {
+        textSize(60)
+        fill("black")
+        text ("It's a draw!",200,200)
+      }
+  
+    //mouse cursor
+    fill("yellow")
+    circle(mouseX,mouseY,50)
+    }
