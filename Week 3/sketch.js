@@ -1,10 +1,4 @@
 let Player = 1
-// let RectX1 = 100
-// let RectX2 = 255
-// let RectX3 = 410
-// let RectY1 = 100
-// let RectY2 = 255
-// let RectY3 = 410
 let RectW = 150
 let RectH = 150
 let RectB = 10
@@ -30,6 +24,10 @@ let ButtonH = 50
 
 function setup() {
   createCanvas(1000, 1000);
+  P1 = createColorPicker('#ffffff');
+  P1.position(650, 500);
+  P2 = createColorPicker('#ffffff');
+  P2.position(700, 500);
 }
 
 function mousePressed(){
@@ -40,7 +38,7 @@ let RectX = 100
 let RectY = 100
 
 
-
+if(Win == 0){
 
 if (Box1 == 0 &&
   mouseX > RectX && mouseX < RectX + RectW &&
@@ -125,10 +123,11 @@ if (Box9 == 0 &&
   Box9 = Player;
   Player++
 }
-  }
+  
       if (Player > 2){
   Player = 1
-}
+}}
+  }
 console.log(Player)
 if (reset == 0 &&
     mouseX > ButtonX && mouseX < ButtonX + ButtonW  &&
@@ -142,16 +141,26 @@ if (reset == 0 &&
     Box7 = 0
     Box8 = 0
     Box9 = 0
+ Win = 0
   }
+
+
 console.log("reset " + reset)
+console.log("win=" + Win)
 }
 
 function draw() {
-  background(190);
+
+  
 let RectX = 100
 let RectY = 100
-
-
+let P1c = P1.color();
+let P2c = P2.color();
+  if (Player == 1){
+  background(P1c);
+  }
+  if (Player == 2){
+    background(P2c)}
 
 
 fill("white")
@@ -160,11 +169,11 @@ textSize(45)
 fill("black")
 text("reset",280,640)
 
-strokeWeight(0)
+strokeWeight(5)
   if(Box1 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box1 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -172,11 +181,11 @@ strokeWeight(0)
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
    if(Box2 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box2 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -184,11 +193,11 @@ strokeWeight(0)
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box3 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box3 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -198,11 +207,11 @@ strokeWeight(0)
 RectX = 100
 RectY += RectH+ RectB;
 
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box4 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box4 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -210,11 +219,11 @@ RectY += RectH+ RectB;
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box5 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box5 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -222,11 +231,11 @@ RectY += RectH+ RectB;
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box6 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box6 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -236,11 +245,11 @@ RectX = 100
 RectY = RectH *2.75 + RectB;
 
 
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box7 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box7 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -248,11 +257,11 @@ RectY = RectH *2.75 + RectB;
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box8 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box8 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
@@ -260,146 +269,168 @@ RectY = RectH *2.75 + RectB;
 
 
   RectX += RectW + RectB;
-  strokeWeight(0)
+  strokeWeight(5)
     if(Box9 == 1) {
-    fill("blue")
+    fill(P1c)
   } else if (Box9 == 2) {
-    fill("red");
+    fill(P2c);
   } else {
     fill("grey");
   }
   rect (RectX,RectY, RectW,RectH)
 
-    
+  //  wincondities 
+    if (Box1 != 0 && Box2 != 0 && Box3 != 0 && Box4 != 0 && Box5 != 0 && Box6 != 0 && Box7 != 0 && Box8 != 0 && Box9 != 0 && Win==0) {
+        textSize(60)
+        fill("black")
+        text ("It's a draw!",200,800)
+      }
+  strokeWeight(30)
   if (Box1 != 0 &&
     Box1 == Box2 &&
     Box1 == Box3
-  ){
+  ){ 
      if (Player == 1) {
+      Win = +1
       winner = 2;
-     
+     line(100,150,575,150)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-    
+     line(100,150,575,150)
      }
+    //  if (Win == 1) 
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
      if (Box1 != 0 &&
     Box1 == Box4 &&
     Box1 == Box7
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-     
+     line(200,100,200,600)
      } else if (Player == 2) {
+      Win = +1
       winner = 1;
-    
+    line(200,100,200,600)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
       if (Box1 != 0 &&
     Box1 == Box5 &&
     Box1 == Box9
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-   
+   line(100,75,600,650)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-   
+   line(100,75,600,650)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
         if (Box2 != 0 &&
     Box2 == Box5 &&
     Box2 == Box8
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-      
+      line(350,100,350,600)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-     
+     line(350,100,350,600)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
         if (Box3 != 0 &&
     Box3 == Box6 &&
     Box3 == Box9
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-      
+       line(500,100,500,600)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-
+line(500,100,500,600)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
         if (Box3 != 0 &&
     Box3 == Box5 &&
     Box3 == Box7
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-      
+      line(100,600,600,50)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-    
+    line(100,600,600,50)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
         if (Box4 != 0 &&
     Box4 == Box5 &&
     Box4 == Box6
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-      
+      line(100,350,575,350)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-      
+      line(100,350,575,350)
      }
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
         if (Box7 != 0 &&
     Box7 == Box8 &&
     Box7 == Box9
   ){
      if (Player == 1) {
+       Win = +1
       winner = 2;
-    
+    line(100,500,575,500)
      } else if (Player == 2) {
+       Win = +1
       winner = 1;
-   
-     }
+   line(100,500,575,500)
+     } 
       textSize(60)
       fill("black")
-      text ("Player " + winner + " wins",200,200)
+      text ("Player " + winner + " wins",100,800)
     }
+    fill("black")
+  text("Player " + Player + " is aan de beurt", 100,85)
+  
 
-
-      if (Box1 != 0 && Box2 != 0 && Box3 != 0 && Box4 != 0 && Box5 != 0 && Box6 != 0 && Box7 != 0 && Box8 != 0 && Box9 != 0) {
-        textSize(60)
-        fill("black")
-        text ("It's a draw!",200,200)
-      }
+     
 
     //mouse cursor
+    strokeWeight(0)
     fill("yellow")
     circle(mouseX,mouseY,50)
     }
