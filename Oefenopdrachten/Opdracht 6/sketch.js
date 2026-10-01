@@ -1,3 +1,8 @@
+let arrperson = [
+  ['Jor', 'Dylan', 'Vico', 'Rico', 'Calum'],
+  ['Liora', 'Thijs','Kendra','Sven','Baran'],
+  ['Jasper','Dylano', 'Dylan2','']
+]
 function setup() {
   createCanvas(400, 400);
 }
