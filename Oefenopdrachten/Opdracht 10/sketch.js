@@ -1,19 +1,19 @@
 let kleuren = ["red", "green", "blue", "orange", "purple", "yellow"];
 let bestanden = ["elephant", "giraffe", "hippo", "monkey", "panda", "parrot", "penguin", "pig", "rabbit", "snake"];
 let button = []
-let bwoah = 220
+let funcs = ["setred","setgreen","setblue","setorange","setpurple","setyellow"]
 
 
 
 function setup() {
   createCanvas(800, 400);
-
+  
   button1();
 
 }
 
 function draw() {
-  background(bwoah);
+ //background(bwoah);
 
 }
 
@@ -35,6 +35,6 @@ let i = 0
 
 function bg(){
 
-bwoah = kleuren
+background(255, 0, 0)
 }
 
