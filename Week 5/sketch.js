@@ -40,32 +40,44 @@ function startPress() {
 
 
 function KnopA(){
-pressed += 1 
-// antwoorden.splice(fix, 1)
-// vragen.splice(fix, 1)
-checken()
+  pressed += 1 
+  antwoorden.splice(fix, 1)
+  vragen.splice(fix, 1)
+  if (ButtonA.html() == antwoorden[fix][0]) {
+    score ++;
+    ButtonA.style('background-color', 'rgb(0, 255, 0)')
+  }
 }
 
 
 function KnopB(){
   pressed +=1
-  // antwoorden.splice(fix, 1)
-  // vragen.splice(fix, 1)
-  checken()
+  antwoorden.splice(fix, 1)
+  vragen.splice(fix, 1)
+  if (ButtonB.html() == antwoorden[fix][0]) {
+    score ++;
+    ButtonB.style('background-color', 'rgb(0, 255, 0)')
+  }
 }
 
 function KnopC(){
   pressed +=1
-  // antwoorden.splice(fix, 1)
-  // vragen.splice(fix, 1)
-  checken()
+  antwoorden.splice(fix, 1)
+  vragen.splice(fix, 1)
+  if (ButtonC.html() == antwoorden[fix][0]) {
+    score ++;
+    ButtonC.style('background-color', 'rgb(0, 255, 0)')
+  }
 }
 
 function KnopD(){
   pressed +=1
-  // antwoorden.splice(fix, 1)
-  // vragen.splice(fix, 1)
-  checken()
+  antwoorden.splice(fix, 1)
+  vragen.splice(fix, 1)
+  if (ButtonD.html() == antwoorden[fix][0]) {
+    score ++;
+    ButtonD.style('background-color', 'rgb(0, 255, 0)')
+  }
 }
 
 
@@ -76,7 +88,7 @@ function KnopD(){
   textSize (40)
   fill ("white")
   // for(let i = 0; i <= tempAntwoord.length; i++){
-  // // console.log(tempAntwoord[i])
+  // console.log(tempAntwoord[i])
   // console.log(fix)
   // }
   text(vragen[fix], 230,100,200,600)
@@ -86,7 +98,10 @@ function KnopD(){
 function GameRound(){
   fix = int(random(0, vragen.length - 1))
 
-
+  ButtonA.style('background-color', 'rgb(255)')
+  ButtonB.style('background-color', 'rgb(255)')
+  ButtonC.style('background-color', 'rgb(255)')
+  ButtonD.style('background-color', 'rgb(255)')
 
   ButtonA.show();
   ButtonB.show();
@@ -103,8 +118,13 @@ function GameRound(){
   tempAntwoord.splice(0,1);
   ButtonD.html(tempAntwoord[0]);
   tempAntwoord.splice(0,1);
-  
-  // console.log(fix)
+
+
+  ButtonA.mousePressed(KnopA);
+  ButtonB.mousePressed(KnopB);
+  ButtonC.mousePressed(KnopC);
+  ButtonD.mousePressed(KnopD);
+
 }
 
 
@@ -113,17 +133,6 @@ function EindScherm(){
   ButtonB.hide();
   ButtonC.hide();
   ButtonD.hide();
-}
-
-
-function checken(){
-  console.log(antwoorden[fix][0])
-  if (antwoorden[fix][0] == ]){
-    
-    score += 1
-  }
-  // console.log(score)
- 
 }
 
 
@@ -142,25 +151,31 @@ function setup() {
   ButtonA.position (20,20);
   ButtonA.size (200,100);
   ButtonA.style('font-size', '32px')
-  ButtonA.mousePressed(KnopA);
+  // ButtonA.mousePressed(KnopA);
 
   ButtonB = createButton("B");
   ButtonB.position (600,20);
   ButtonB.size (200,100);
   ButtonB.style('font-size', '32px')
-  ButtonB.mousePressed(KnopB);
+  // ButtonB.mousePressed(KnopB);
   
   ButtonC = createButton("C");
   ButtonC.position (20,500);
   ButtonC.size (200,100);
   ButtonC.style('font-size', '32px')
-  ButtonC.mousePressed(KnopC);
+  // ButtonC.mousePressed(KnopC);
   
   ButtonD = createButton("D");
   ButtonD.position (600,500);
   ButtonD.size (200,100);
   ButtonD.style('font-size', '32px')
-  ButtonD.mousePressed(KnopD);
+  // ButtonD.mousePressed(KnopD);
+
+  
+  ButtonA.style('background-color', 'rgb(255)')
+  ButtonB.style('background-color', 'rgb(255)')
+  ButtonC.style('background-color', 'rgb(255)')
+  ButtonD.style('background-color', 'rgb(255)')
 
 
   ButtonA.hide();
@@ -180,8 +195,7 @@ function draw() {
     image(img, 0, 0, 800, 600)
   }
   
-
-  
+  console.log(score);
 
   if (pressed == 1){
     pressed = 2;
