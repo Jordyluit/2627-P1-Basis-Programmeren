@@ -41,29 +41,31 @@ function startPress() {
 
 function KnopA(){
 pressed += 1 
-antwoorden.splice(fix, 1)
-vragen.splice(fix, 1)
+// antwoorden.splice(fix, 1)
+// vragen.splice(fix, 1)
 checken()
 }
 
 
 function KnopB(){
   pressed +=1
-  antwoorden.splice(fix, 1)
-  vragen.splice(fix, 1)
+  // antwoorden.splice(fix, 1)
+  // vragen.splice(fix, 1)
   checken()
 }
 
 function KnopC(){
   pressed +=1
-  antwoorden.splice(fix, 1)
-  vragen.splice(fix, 1)
+  // antwoorden.splice(fix, 1)
+  // vragen.splice(fix, 1)
+  checken()
 }
 
 function KnopD(){
   pressed +=1
-  antwoorden.splice(fix, 1)
-  vragen.splice(fix, 1)
+  // antwoorden.splice(fix, 1)
+  // vragen.splice(fix, 1)
+  checken()
 }
 
 
@@ -73,7 +75,12 @@ function KnopD(){
   stroke("black")
   textSize (40)
   fill ("white")
+  // for(let i = 0; i <= tempAntwoord.length; i++){
+  // // console.log(tempAntwoord[i])
+  // console.log(fix)
+  // }
   text(vragen[fix], 230,100,200,600)
+  
   }
 
 function GameRound(){
@@ -97,7 +104,7 @@ function GameRound(){
   ButtonD.html(tempAntwoord[0]);
   tempAntwoord.splice(0,1);
   
-  console.log(fix)
+  // console.log(fix)
 }
 
 
@@ -110,8 +117,8 @@ function EindScherm(){
 
 
 function checken(){
-  console.log(antwoorden[0][0])
-  if (antwoorden == [tempAntwoord][0]){
+  console.log(antwoorden[fix][0])
+  if (antwoorden[fix][0] == ]){
     
     score += 1
   }
@@ -173,7 +180,9 @@ function draw() {
     image(img, 0, 0, 800, 600)
   }
   
-  Questions()
+
+  
+
   if (pressed == 1){
     pressed = 2;
     GameRound();
@@ -218,5 +227,5 @@ function draw() {
     pressed = 22
     EindScherm()
   }
-  
+    Questions()
 }
