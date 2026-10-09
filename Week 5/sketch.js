@@ -120,10 +120,10 @@ function GameRound(){
   tempAntwoord.splice(0,1);
 
 
-  ButtonA.mousePressed(KnopA);
-  ButtonB.mousePressed(KnopB);
-  ButtonC.mousePressed(KnopC);
-  ButtonD.mousePressed(KnopD);
+  // ButtonA.mousePressed(KnopA);
+  // ButtonB.mousePressed(KnopB);
+  // ButtonC.mousePressed(KnopC);
+  // ButtonD.mousePressed(KnopD);
 
 }
 
@@ -151,25 +151,25 @@ function setup() {
   ButtonA.position (20,20);
   ButtonA.size (200,100);
   ButtonA.style('font-size', '32px')
-  // ButtonA.mousePressed(KnopA);
+  ButtonA.mousePressed(KnopA);
 
   ButtonB = createButton("B");
   ButtonB.position (600,20);
   ButtonB.size (200,100);
   ButtonB.style('font-size', '32px')
-  // ButtonB.mousePressed(KnopB);
+  ButtonB.mousePressed(KnopB);
   
   ButtonC = createButton("C");
   ButtonC.position (20,500);
   ButtonC.size (200,100);
   ButtonC.style('font-size', '32px')
-  // ButtonC.mousePressed(KnopC);
-  
+  ButtonC.mousePressed(KnopC);
+
   ButtonD = createButton("D");
   ButtonD.position (600,500);
   ButtonD.size (200,100);
   ButtonD.style('font-size', '32px')
-  // ButtonD.mousePressed(KnopD);
+  ButtonD.mousePressed(KnopD);
 
   
   ButtonA.style('background-color', 'rgb(255)')
