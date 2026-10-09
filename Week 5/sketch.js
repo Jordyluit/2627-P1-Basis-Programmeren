@@ -5,11 +5,14 @@ let img;
 let img2;
 let pressed = 0;
 let buttonStart;
-let buttonA;
-let buttonB;
-let buttonC;
-let buttonD;
+let col;
+let right = false;
+let ButtonA;
+let ButtonB;
+let ButtonC;
+let ButtonD;
 let vraaggeweest;
+let rightAns = 0;
 let vragen =[["Hoe heet het junior team van dit team, dat ook in de formule 1 rijdt" ],["Hoeveel coureurs hebben een GP gereden voor het team?"],['In welk jaar is het team opgericht?'],["Voor hoeveel geld hebben ze Jaguar F1 team overgekocht?"],["Hoeveel constructeurs-kampioenschappen hebben ze gewonnen?"],["Hoeveel team principals heeft het team gehad?"],["Hoeveel coureurs hebben 100 of meer GP’s voor het team gereden?"],["Hoeveel race overwinningen heeft het team behaald"],["Hoeveel coureurs-kampioenschappen heeft het team gewonnen?"],["Waar is dit team gevestigd?"]]
 let antwoorden =[
   ["Racing Bulls","Toro Rosso","Rode Stier", "Alphatauri"],
@@ -43,7 +46,7 @@ function KnopA(){
   pressed += 1 
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
-  if (ButtonA.html() == antwoorden[fix][0]) {
+  if (rightAns == 1) {
     score ++;
     ButtonA.style('background-color', 'rgb(0, 255, 0)')
   }
@@ -54,7 +57,7 @@ function KnopB(){
   pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
-  if (ButtonB.html() == antwoorden[fix][0]) {
+  if (rightAns == 2) {
     score ++;
     ButtonB.style('background-color', 'rgb(0, 255, 0)')
   }
@@ -64,7 +67,7 @@ function KnopC(){
   pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
-  if (ButtonC.html() == antwoorden[fix][0]) {
+  if (rightAns == 3) {
     score ++;
     ButtonC.style('background-color', 'rgb(0, 255, 0)')
   }
@@ -74,41 +77,42 @@ function KnopD(){
   pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
-  if (ButtonD.html() == antwoorden[fix][0]) {
+  if (rightAns == 4) {
     score ++;
     ButtonD.style('background-color', 'rgb(0, 255, 0)')
   }
 }
 
 
-  function Questions(){
 
+function Questions(){
   strokeWeight(13)
   stroke("black")
   textSize (40)
   fill ("white")
-  // for(let i = 0; i <= tempAntwoord.length; i++){
-  // console.log(tempAntwoord[i])
-  // console.log(fix)
-  // }
   text(vragen[fix], 230,100,200,600)
-  
-  }
+}
+
 
 function GameRound(){
   fix = int(random(0, vragen.length - 1))
 
-  ButtonA.style('background-color', 'rgb(255)')
-  ButtonB.style('background-color', 'rgb(255)')
-  ButtonC.style('background-color', 'rgb(255)')
-  ButtonD.style('background-color', 'rgb(255)')
+  ButtonA.style('background-color', 'rgb(255, 255, 255)')
+  ButtonB.style('background-color', 'rgb(255, 255, 255)')
+  ButtonC.style('background-color', 'rgb(255, 255, 255)')
+  ButtonD.style('background-color', 'rgb(255, 255, 255)')
 
   ButtonA.show();
   ButtonB.show();
   ButtonC.show();
   ButtonD.show();
 
-  tempAntwoord = shuffle(antwoorden[fix])
+  antwTeken();
+
+  ButtonA.mousePressed(KnopA);
+  ButtonB.mousePressed(KnopB);
+  ButtonC.mousePressed(KnopC);
+  ButtonD.mousePressed(KnopD);
 
   ButtonA.html(tempAntwoord[0]);
   tempAntwoord.splice(0,1);
@@ -118,13 +122,22 @@ function GameRound(){
   tempAntwoord.splice(0,1);
   ButtonD.html(tempAntwoord[0]);
   tempAntwoord.splice(0,1);
+}
 
 
-  // ButtonA.mousePressed(KnopA);
-  // ButtonB.mousePressed(KnopB);
-  // ButtonC.mousePressed(KnopC);
-  // ButtonD.mousePressed(KnopD);
+function antwTeken() {
+  tempAntwoord = shuffle(antwoorden[fix])
+  rightAns = 0;
 
+  if (tempAntwoord[0] == antwoorden[fix][0]) {
+    rightAns = 1;
+  } else if (tempAntwoord[1] == antwoorden[fix][0]) {
+    rightAns = 2;
+  } else if (tempAntwoord[2] == antwoorden[fix][0]) {
+    rightAns = 3;
+  } else if (tempAntwoord[3] == antwoorden[fix][0]) {
+    rightAns = 4;
+  }
 }
 
 
@@ -133,12 +146,17 @@ function EindScherm(){
   ButtonB.hide();
   ButtonC.hide();
   ButtonD.hide();
+
+  strokeWeight(13)
+  stroke("black")
+  textSize (80)
+  fill ("white")
+  text(score + "/10", width / 2 - 90, height / 2 - 50, 200, 600)
 }
 
 
 function setup() {
   createCanvas(800, 600);
-//  console.log("fix " + fix)
 
   buttonStart = createButton("start");
   buttonStart.position (325,425);
@@ -146,37 +164,30 @@ function setup() {
   buttonStart.mousePressed(startPress);
 
 
-
   ButtonA = createButton("A");
   ButtonA.position (20,20);
   ButtonA.size (200,100);
   ButtonA.style('font-size', '32px')
-  ButtonA.mousePressed(KnopA);
 
   ButtonB = createButton("B");
   ButtonB.position (600,20);
   ButtonB.size (200,100);
   ButtonB.style('font-size', '32px')
-  ButtonB.mousePressed(KnopB);
   
   ButtonC = createButton("C");
   ButtonC.position (20,500);
   ButtonC.size (200,100);
   ButtonC.style('font-size', '32px')
-  ButtonC.mousePressed(KnopC);
 
   ButtonD = createButton("D");
   ButtonD.position (600,500);
   ButtonD.size (200,100);
   ButtonD.style('font-size', '32px')
-  ButtonD.mousePressed(KnopD);
-
   
   ButtonA.style('background-color', 'rgb(255)')
   ButtonB.style('background-color', 'rgb(255)')
   ButtonC.style('background-color', 'rgb(255)')
   ButtonD.style('background-color', 'rgb(255)')
-
 
   ButtonA.hide();
   ButtonB.hide();
@@ -188,6 +199,7 @@ function setup() {
 function draw() {
   background(220);
   image(img, 0, 0, 800,600);
+
   if (pressed >= 2){
     image(img2, 0, 0, 800, 600)
   }
@@ -196,6 +208,7 @@ function draw() {
   }
   
   console.log(score);
+  // console.log(right);
 
   if (pressed == 1){
     pressed = 2;
@@ -238,8 +251,7 @@ function draw() {
     GameRound()
   }
      if (pressed == 21){
-    pressed = 22
     EindScherm()
   }
-    Questions()
+  Questions()
 }
