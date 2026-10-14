@@ -5,6 +5,7 @@ let img;
 let img2;
 let pressed = 0;
 let buttonStart;
+let ButtonNext;
 let col;
 let right = false;
 let ButtonA;
@@ -40,46 +41,50 @@ function startPress() {
   pressed += 1;
 }
 
+function Next(){
+  ButtonNext.hide();
+  pressed += 1
+}
 
 
 function KnopA(){
-  pressed += 1 
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
   if (rightAns == 1) {
     score ++;
     ButtonA.style('background-color', 'rgb(0, 255, 0)')
+    ButtonNext.show();
   }
 }
 
 
 function KnopB(){
-  pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
   if (rightAns == 2) {
     score ++;
     ButtonB.style('background-color', 'rgb(0, 255, 0)')
+    ButtonNext.show();
   }
 }
 
 function KnopC(){
-  pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
   if (rightAns == 3) {
     score ++;
     ButtonC.style('background-color', 'rgb(0, 255, 0)')
+    ButtonNext.show();
   }
 }
 
 function KnopD(){
-  pressed +=1
   antwoorden.splice(fix, 1)
   vragen.splice(fix, 1)
   if (rightAns == 4) {
     score ++;
     ButtonD.style('background-color', 'rgb(0, 255, 0)')
+    ButtonNext.show();
   }
 }
 
@@ -92,6 +97,7 @@ function Questions(){
   fill ("white")
   text(vragen[fix], 230,100,200,600)
 }
+
 
 
 function GameRound(){
@@ -163,6 +169,11 @@ function setup() {
   buttonStart.style('font-size', '64px');
   buttonStart.mousePressed(startPress);
 
+  ButtonNext = createButton("next")
+  ButtonNext.position (100,100) 
+  ButtonNext.style("font-size", '64px')
+  ButtonNext.mousePressed(Next)
+
 
   ButtonA = createButton("A");
   ButtonA.position (20,20);
@@ -193,30 +204,37 @@ function setup() {
   ButtonB.hide();
   ButtonC.hide();
   ButtonD.hide();
+  ButtonNext.hide();
 }
 
 
 function draw() {
   background(220);
   image(img, 0, 0, 800,600);
-
+  console.log(pressed)
   if (pressed >= 2){
     image(img2, 0, 0, 800, 600)
   }
   if (pressed >= 21){
     image(img, 0, 0, 800, 600)
   }
+  Questions()
   
-  console.log(score);
+  // console.log(score);
   // console.log(right);
 
   if (pressed == 1){
     pressed = 2;
     GameRound();
+    
   }
   if (pressed == 3){
     pressed = 4
     GameRound()
+  }
+  if (pressed == 5){
+    pressed = 6
+    GameRound() 
   }
     if (pressed == 5){
     pressed = 6
@@ -253,5 +271,5 @@ function draw() {
      if (pressed == 21){
     EindScherm()
   }
-  Questions()
+ 
 }
