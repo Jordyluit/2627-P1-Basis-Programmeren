@@ -9,6 +9,20 @@ let KatHappy = 320
 let KatEnergy = 320
 let KatHunger = 320
 let eten = 30
+let muis0;
+let muis1;
+let muis2;
+let muis3;
+let muis4;
+let muis5;
+let muisjes = [];
+
+let muizen;
+
+let RandomAantal = 0
+let randomPos;
+let randommuis;
+let yo = 0;
 
 
 function preload(){
@@ -18,6 +32,7 @@ function preload(){
   Alley = loadImage("Background/pixel-alley-decay-stockcake.png")
   Pagina = loadImage("Boek/Bladzijde.png")
   Pijl = loadImage("Pijl/Pijl.png")
+  Muisje = loadImage("Muis/Muis.png")
 }
 
 
@@ -65,7 +80,31 @@ function setup() {
   buttonEten.position(100,100)
   buttonEten.mousePressed(food)
   buttonEten.hide()
-  }
+
+ 
+  RandomAantal = round(random(6));
+
+
+  muis0 = new muis(130, 150);
+  muisjes.push(muis0);
+
+  muis1 = new muis(460, 140);
+  muisjes.push(muis1);
+
+  muis2 = new muis(130, 420);
+  muisjes.push(muis2);
+
+  muis3 = new muis(130, 550);
+  muisjes.push(muis3);
+
+  muis4 = new muis(600, 670);
+  muisjes.push(muis4);
+
+  muis5 = new muis(580, 490);
+  muisjes.push(muis5);
+}
+
+
   
 
 function Doolhof(){
@@ -133,7 +172,7 @@ function Menu(){
   fill("green")
   rect(600,300,KatEnergy,50)
   fill("black")
-  text("Hunger",505,435)
+  text("Food",505,435)
   fill("white")
   rect(600,400,350,50)
   fill("green")
@@ -147,11 +186,11 @@ function Menu(){
 
 
 function draw() {
-
+strokeWeight(1)
 
   if (pressBoek == 1){
     image(Pagina,0,0,1000,900)
-    textSize (50)
+    textSize (40)
     fill("black")
     text("LET OP: Dit boek is er alleen deze keer en daarna niet opnieuw, dus lees het goed door!", 100, 100, 900, 800)
   }
@@ -165,11 +204,11 @@ function draw() {
   }
   if (pressBoek == 4){
     image (Pagina,0,0,1000,900)
-    text("Ook zal je nieuwe knoppen zien verschijnen als je in het homemenu zit, deze knoppen brengen je naar verschillende locaties. De meest linkerknop, brengt je naar een steegje waar een bar zijn restjes weggooit, dit is een mooie plek voor jouw huisdier om dus een lekker hapje te kunnen eten.", 100,100,900,800)
+    text("Ook zal je nieuwe knoppen zien verschijnen als je in het homemenu zit, deze knoppen brengen je naar verschillende locaties. De meest linkerknop, brengt je naar een steegje waar een bar zijn restjes weggooit, dit is een mooie plek voor jouw huisdier om dus een lekker hapje te kunnen eten, let erop dat dit ook beschimmeld kan zijn en dat er een kans is dat je vergiftigd wordt.", 100,100,900,800)
   }
   if (pressBoek == 5){
     image (Pagina,0,0,1000,900)
-    text("Het tweede knopje, brengt je naar een kat en muisdoolhof, waar het jouw doel is om de muiz te vangen voordat deze uit het doolhof kan ontsnappen, hiervan gaat je Happy-bar omhoog en als je de muis vangt ook je hunger-bar, als je de muis niet vangt gaat je hunger-bar dus niet omhoog.", 100,100,900,800)
+    text("Het tweede knopje, brengt je naar een doolhof, waar het jouw doel is om zoveel mogelijk muizen op te eten, de muizen zorgen ervoor dat je food bar hoger wordt, oftewel, dat je minder honger hebt. De kat vind het ook leuk om in het doolhof te zijn en zal dus ook gelukkiger worden als je het doolhof aan het spelen bent.", 100,100,900,800)
   }
   if (pressBoek == 6){
     image(achtergrond,0,0,1000,900)
@@ -199,7 +238,43 @@ function draw() {
     Menu()
   }
 
+  //Doolhof
+  if (pressDoolhof == 1){
+  strokeWeight(20)
+  background("white")
+  //Omlijning
+  line(10,90,10,10)
+  line(10,10,990,10)
+  line(10,180,10,790)
+  line(10,790,800,790)
+  line(880,790,990,790)
+  line(990,10,990,790)
 
+
+  //Invulling Doolhof
+  line(100,10,100,250)
+  line(100,250,250,250)
+  line(10,340,250,340)
+  line(250,340,250,520)
+  line(100,520,250,520)
+  line(100,660,100,440)
+  line(100,660,420,660)
+  line(420,660,420,340)
+  line(250,250,250,100)
+  line(420,340,600,340)
+  line(420,340,420,100)
+  line(720,790,720,600)
+  line(720,600,540,600)
+  line(540,600,540,450)
+  line(540,450,880,450)
+  line(880,450,880,100)
+  line(750,250,750,10)
+  line(420,100,600,100)
+  line(600,100,600,250)
+
+
+  random2();
+}
 
 
 if (KatHunger >= 350){
@@ -232,6 +307,9 @@ if (KatHunger >= 350){
   // console.log("KatHappy" + KatHappy)
 
 
+console.log(pressDoolhof)
+
+
 
   if (keyIsPressed == true)
     if (keyCode == 38 || keyCode == 87)
@@ -245,12 +323,36 @@ if (KatHunger >= 350){
   if (keyIsPressed == true)
     if (keyCode == 37 || keyCode == 65)
       KatX -= 5
-    console.log(pressBoek)
+    // console.log(pressBoek)
 
   if(pressBoek == 0){
     fill("orange")
     textSize (100)
     text("DRUK EERST OP HET BOEK", 100, 200, 900, 800)
     image(Pijl, 100,400)
+  }
+}
+
+
+
+
+
+//Muis
+class muis {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  draw() {
+    image(Muisje, this.x, this.y, 90, 90);
+  }
+}
+
+function random2() {
+  for (j = 0; j <= 5; j++) {
+    for(i=0; i<RandomAantal; i++){
+      random(muisjes).draw();
+    }
   }
 }
