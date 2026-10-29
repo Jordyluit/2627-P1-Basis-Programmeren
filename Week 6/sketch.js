@@ -1,5 +1,5 @@
-let KatX = 700; 
-let KatY = 700;
+let KatX = 40; 
+let KatY = 100;
 let press = 0;
 let pressAlley = 0
 let pressBoek = 0
@@ -16,7 +16,7 @@ let muis3;
 let muis4;
 let muis5;
 let muisjes = [];
-
+let HuidigeMuisjes =[];
 let muizen;
 
 let RandomAantal = 0
@@ -33,6 +33,7 @@ function preload(){
   Pagina = loadImage("Boek/Bladzijde.png")
   Pijl = loadImage("Pijl/Pijl.png")
   Muisje = loadImage("Muis/Muis.png")
+  KatDood = loadImage("Kat/KatDood.png")
 }
 
 
@@ -102,6 +103,12 @@ function setup() {
 
   muis5 = new muis(580, 490);
   muisjes.push(muis5);
+
+  let testMuisjes = [0,1,2,3,4,5]
+  for (let i = 0; i < random(1,6); i++) {
+    HuidigeMuisjes.push(testMuisjes.splice(random(0,testMuisjes.length-1),1))
+  }
+  console.log(HuidigeMuisjes.length)
 }
 
 
@@ -187,6 +194,7 @@ function Menu(){
 
 function draw() {
 strokeWeight(1)
+  
 
   if (pressBoek == 1){
     image(Pagina,0,0,1000,900)
@@ -213,7 +221,6 @@ strokeWeight(1)
   if (pressBoek == 6){
     image(achtergrond,0,0,1000,900)
     start()
-    image(Kat, KatX, KatY, 200, 200)
   }
 
 
@@ -221,25 +228,42 @@ strokeWeight(1)
   
   if (press == 0 && pressBoek == 0) {
     image(achtergrond,0,0,1000,900)
-    image(Kat, KatX, KatY, 200, 200)
+    
  }else if (press == 1) {
     image(achtergrond,0,0,1000,900)
-    image(Kat, KatX, KatY, 200, 200)
     Menu();
  }
+ 
 
 
   if (pressAlley == 1){
   image(Alley, 0,0,1000,900)
-  image(Kat, KatX, KatY, 200, 200)
   }
-
-  if (pressAlley == 1 && press == 1){
+if (KatHealth > 0 && (pressAlley == 0 || pressAlley == 1)){
+    image(Kat, KatX, KatY, 200, 200)
+ }
+if (pressAlley == 1 && press == 1){
+  fill("grey")
     Menu()
   }
+  
 
   //Doolhof
   if (pressDoolhof == 1){
+   
+
+    if (keyIsPressed == true)
+    if (keyCode == 38 || keyCode == 87)
+      KatY -= 5
+  if (keyIsPressed == true)
+    if (keyCode == 40 || keyCode == 83)
+      KatY += 5
+  if (keyIsPressed == true)
+    if (keyCode == 39 || keyCode == 68)
+      KatX += 5
+  if (keyIsPressed == true)
+    if (keyCode == 37 || keyCode == 65)
+      KatX -= 5
   strokeWeight(20)
   background("white")
   //Omlijning
@@ -272,6 +296,9 @@ strokeWeight(1)
   line(420,100,600,100)
   line(600,100,600,250)
 
+  circle(KatX,KatY,50)
+
+ 
 
   random2();
 }
@@ -280,6 +307,9 @@ strokeWeight(1)
 if (KatHunger >= 350){
   KatHunger = 350
 }
+
+ 
+
   
   
     
@@ -289,7 +319,7 @@ if (KatHunger >= 350){
 
 
   if (KatHealth > 0){
-    KatHealth -= 1
+    KatHealth -= 5
   }
   if (KatEnergy > 0){
     KatEnergy -= 1
@@ -311,18 +341,7 @@ console.log(pressDoolhof)
 
 
 
-  if (keyIsPressed == true)
-    if (keyCode == 38 || keyCode == 87)
-      KatY -= 5
-  if (keyIsPressed == true)
-    if (keyCode == 40 || keyCode == 83)
-      KatY += 5
-  if (keyIsPressed == true)
-    if (keyCode == 39 || keyCode == 68)
-      KatX += 5
-  if (keyIsPressed == true)
-    if (keyCode == 37 || keyCode == 65)
-      KatX -= 5
+ 
     // console.log(pressBoek)
 
   if(pressBoek == 0){
@@ -330,6 +349,9 @@ console.log(pressDoolhof)
     textSize (100)
     text("DRUK EERST OP HET BOEK", 100, 200, 900, 800)
     image(Pijl, 100,400)
+  }
+  if (KatHealth == 0){
+
   }
 }
 
@@ -347,12 +369,22 @@ class muis {
   draw() {
     image(Muisje, this.x, this.y, 90, 90);
   }
+ CollisionCheck(KatX,KatY){
+  console.log("KatX " +KatX +" KatY " +KatY)
+  console.log("muisX " +(this.x + 55) +" muisY " +(this.y +55))
+  if (KatX > this.x +55  -20 && KatX < this.x+55 + 20 &&
+  KatY > this.y+55-20 && KatY < this.y + 55 + 20  ){
+    console.log("jummy jummy muisje")
+
+  }
+  }
+
 }
 
+
 function random2() {
-  for (j = 0; j <= 5; j++) {
-    for(i=0; i<RandomAantal; i++){
-      random(muisjes).draw();
-    }
+  for (j = 0; j < HuidigeMuisjes.length; j++) {
+      muisjes[HuidigeMuisjes[j]].draw();
+      muisjes[HuidigeMuisjes[j]].CollisionCheck(KatX,KatY);
   }
 }
