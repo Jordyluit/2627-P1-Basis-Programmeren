@@ -1,5 +1,5 @@
-let KatX = 40; 
-let KatY = 100;
+let KatX = 800; 
+let KatY = 600;
 let press = 0;
 let pressAlley = 0
 let pressBoek = 0
@@ -23,6 +23,7 @@ let RandomAantal = 0
 let randomPos;
 let randommuis;
 let yo = 0;
+let play = false
 
 
 function preload(){
@@ -34,6 +35,7 @@ function preload(){
   Pijl = loadImage("Pijl/Pijl.png")
   Muisje = loadImage("Muis/Muis.png")
   KatDood = loadImage("Kat/KatDood.png")
+  UnderConstruction = loadImage("Reset/UnderConstruction/UnderConstruction.png")
 }
 
 
@@ -41,6 +43,30 @@ function setup() {
   createCanvas(1000, 900);
   frameRate(10)
 
+  //Item Ophalen
+  KatHealth = getItem("KatHealth")
+
+  if(KatHealth === null || KatHealth == "undefined"){
+    KatHealth = 350
+  }
+
+  KatHappy = getItem("KatHappy")
+
+  if(KatHappy === null || KatHappy == "undefined"){
+    KatHappy = 350
+  }
+
+  KatEnergy = getItem("KatEnergy")
+
+  if(KatEnergy === null || KatEnergy == "undefined"){
+    KatEnergy = 350
+  }
+
+  KatHunger = getItem("KatHunger")
+
+  if(KatHunger === null || KatHunger == "undefined"){
+    KatHunger = 350
+  }
 
   buttonMenu = createImg(
   "HomeButton/HomeButton.png",
@@ -77,10 +103,21 @@ function setup() {
   buttonBoek.position(10,700)
   buttonBoek.mousePressed(Boek)
 
-  buttonEten = createButton("eten")
-  buttonEten.position(100,100)
+  buttonEten = createImg(
+    "Muis/Muis.png"
+  )
+  buttonEten.position(700,700)
   buttonEten.mousePressed(food)
+  buttonEten.style("height","50px")
   buttonEten.hide()
+
+  ButtonReset = createImg(
+    "Reset/Reset.png"
+  )
+  ButtonReset.position(500,600)
+  ButtonReset.style("height","50px")
+  ButtonReset.mousePressed(Reset)
+  ButtonReset.hide()
 
  
   RandomAantal = round(random(6));
@@ -112,13 +149,15 @@ function setup() {
 }
 
 
-  
+function Reset(){
+  KatHealth = 350
+  KatHunger = 350
+  KatHappy = 350
+  KatEnergy = 350
+}
 
 function Doolhof(){
 pressDoolhof +=1
-if (pressDoolhof >=2){
-  pressDoolhof = 0
-}
 }
 
 function food(){
@@ -140,7 +179,19 @@ function PressedAlley(){
   if (pressAlley >= 2){
    pressAlley = 0
   }
+  if (pressAlley == 1){
+  buttonEten.show()
+  }
 }
+
+function ShowReset(){
+  ButtonReset.show()
+}
+
+function HideReset(){
+  ButtonReset.hide()
+}
+
 
 function Pressed() {
     press += 1;
@@ -166,25 +217,32 @@ function Menu(){
   rect(600, 100 , 350, 50)
   fill("green")
   rect(600, 100 , KatHealth, 50)
+  storeItem("KatHealth",KatHealth)
+
   fill("black")
   text("Happy",505,235)
   fill("white")
   rect(600, 200 , 350, 50)
   fill("green")
   rect(600,200,KatHappy,50)
+   storeItem("KatHappy",KatHappy)
+
   fill("black")
   text("Energy",505,335)
   fill("white")
   rect(600,300,350,50)
   fill("green")
   rect(600,300,KatEnergy,50)
+  storeItem("KatEnergy",KatEnergy)
+
   fill("black")
   text("Food",505,435)
   fill("white")
   rect(600,400,350,50)
   fill("green")
   rect(600,400,KatHunger,50)
-  
+   storeItem("KatHunger",KatHunger)
+
 }
 
 
@@ -194,7 +252,8 @@ function Menu(){
 
 function draw() {
 strokeWeight(1)
-  
+console.log("dist" + dist)
+ 
 
   if (pressBoek == 1){
     image(Pagina,0,0,1000,900)
@@ -216,9 +275,13 @@ strokeWeight(1)
   }
   if (pressBoek == 5){
     image (Pagina,0,0,1000,900)
-    text("Het tweede knopje, brengt je naar een doolhof, waar het jouw doel is om zoveel mogelijk muizen op te eten, de muizen zorgen ervoor dat je food bar hoger wordt, oftewel, dat je minder honger hebt. De kat vind het ook leuk om in het doolhof te zijn en zal dus ook gelukkiger worden als je het doolhof aan het spelen bent.", 100,100,900,800)
+    text("Het tweede knopje, Lijkt kapot te zijn, maar is dat ook zo?", 100,100,900,800)
   }
   if (pressBoek == 6){
+    image (Pagina,0,0,1000,900)
+    text("de kat houdt van aandacht probeer dus ook met de kat te interacten, dit kan door op het derde knopje in het menu te drukken.",100,100,900,800)
+  }  
+  if (pressBoek == 7){
     image(achtergrond,0,0,1000,900)
     start()
   }
@@ -232,6 +295,7 @@ strokeWeight(1)
  }else if (press == 1) {
     image(achtergrond,0,0,1000,900)
     Menu();
+    
  }
  
 
@@ -247,88 +311,129 @@ if (pressAlley == 1 && press == 1){
     Menu()
   }
   
+  if (pressDoolhof == 10){
+    image(Pagina,0,0,1000,900)
+    text("Fijn nu is het spel dus kapot, ik zei nog dat de tweede knop niks deed, waarom bleef je het nou proberen?",100,100,900,800)
+    KatHealth = 10
+  }
+
+  if (pressDoolhof == 11){
+    image(Pagina,0,0,1000,900)
+    text("De zwerfkat is net aangevallen en is bijna al zijn health verloren. Is dit nou echt wat je wilde bereiken?",100,100,900,800)
+  }
 
   //Doolhof
-  if (pressDoolhof == 1){
+//   if (pressDoolhof == 1){
    
 
+if (KatHealth > 0){
     if (keyIsPressed == true)
-    if (keyCode == 38 || keyCode == 87)
-      KatY -= 5
-  if (keyIsPressed == true)
-    if (keyCode == 40 || keyCode == 83)
-      KatY += 5
   if (keyIsPressed == true)
     if (keyCode == 39 || keyCode == 68)
       KatX += 5
   if (keyIsPressed == true)
     if (keyCode == 37 || keyCode == 65)
       KatX -= 5
-  strokeWeight(20)
-  background("white")
-  //Omlijning
-  line(10,90,10,10)
-  line(10,10,990,10)
-  line(10,180,10,790)
-  line(10,790,800,790)
-  line(880,790,990,790)
-  line(990,10,990,790)
+}
+//   strokeWeight(20)
+//   background("white")
+//   //Omlijning
+//   line(10,90,10,10)
+//   line(10,10,990,10)
+//   line(10,180,10,790)
+//   line(10,790,800,790)
+//   line(880,790,990,790)
+//   line(990,10,990,790)
 
 
-  //Invulling Doolhof
-  line(100,10,100,250)
-  line(100,250,250,250)
-  line(10,340,250,340)
-  line(250,340,250,520)
-  line(100,520,250,520)
-  line(100,660,100,440)
-  line(100,660,420,660)
-  line(420,660,420,340)
-  line(250,250,250,100)
-  line(420,340,600,340)
-  line(420,340,420,100)
-  line(720,790,720,600)
-  line(720,600,540,600)
-  line(540,600,540,450)
-  line(540,450,880,450)
-  line(880,450,880,100)
-  line(750,250,750,10)
-  line(420,100,600,100)
-  line(600,100,600,250)
+//   //Invulling Doolhof
+//   line(100,10,100,250)
+//   line(100,250,250,250)
+//   line(10,340,250,340)
+//   line(250,340,250,520)
+//   line(100,520,250,520)
+//   line(100,660,100,440)
+//   line(100,660,420,660)
+//   line(420,660,420,340)
+//   line(250,250,250,100)
+//   line(420,340,600,340)
+//   line(420,340,420,100)
+//   line(720,790,720,600)
+//   line(720,600,540,600)
+//   line(540,600,540,450)
+//   line(540,450,880,450)
+//   line(880,450,880,100)
+//   line(750,250,750,10)
+//   line(420,100,600,100)
+//   line(600,100,600,250)
+//   //Kat Doolhof bewegen
+//  if(KatX == dist(20,20,20,330)){
+//   KatX = 22
+//   }
 
-  circle(KatX,KatY,50)
+//   circle(KatX,KatY,10)
+
+//    fill("green")
+//   textSize(20)
+//   text(mouseX + "," + mouseY,10,20);
 
  
 
-  random2();
+//   random2();
+// }
+
+
+
+
+
+if (KatHealth >= 350){
+  KatHealth = 350
 }
-
-
+if (KatEnergy >= 350){
+  KatEnergy = 350
+}
+if (KatHappy >= 350){
+  KatHappy = 350
+}
 if (KatHunger >= 350){
   KatHunger = 350
 }
-
  
 
+
+if (KatHealth <= 0){
+  KatHealth = 0
+}
+if (KatEnergy <= 0){
+  KatEnergy = 0
+}
+if (KatHappy <= 0){
+  KatHappy = 0
+}
+if (KatHunger <= 0){
+  KatHunger = 0
+}
   
-  
-    
-
-
-
-
 
   if (KatHealth > 0){
-    KatHealth -= 5
+    KatHealth -= 3
+    HideReset()
   }
   if (KatEnergy > 0){
-    KatEnergy -= 1
+    KatEnergy -= 0.5
   }
   if (KatHappy > 0){
-    KatHappy -= 1
+    KatHappy -= 0.5
   }
   if (KatHunger > 0){
-    KatHunger -= 1
+    KatHunger -= 0.5
+  }
+  if (KatHealth <= 0){
+    ShowReset()
+  }
+  if (KatHealth <= 0){
+  KatDood.resize(150,0)
+  image(KatDood,KatX,KatY)
   }
   // console.log("press" + press)
   // console.log("KatHealth" + KatHealth)
@@ -350,9 +455,7 @@ console.log(pressDoolhof)
     text("DRUK EERST OP HET BOEK", 100, 200, 900, 800)
     image(Pijl, 100,400)
   }
-  if (KatHealth == 0){
 
-  }
 }
 
 
