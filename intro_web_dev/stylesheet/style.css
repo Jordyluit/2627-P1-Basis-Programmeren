@@ -16,3 +16,12 @@ header h1{
 margin:0;
 padding:10px;    
 }
+
+.card{
+    background-color: black;
+}
+
+.card img{
+    width: 450px;
+    height: 450px;
+}
