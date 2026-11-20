@@ -19,13 +19,14 @@ padding:10px;
 
 .card{
     background-color: black;
-    border-radius: 25px;
+    border-radius: 0px;
+    border-width: 650px;
 }
 
 .card img{
     width: 450px;
     height: 450px;
-    border-radius: 25px;
+    border-radius: 0px;
 }
 
 .producten{
