@@ -19,9 +19,20 @@ padding:10px;
 
 .card{
     background-color: black;
+    border-radius: 25px;
 }
 
 .card img{
     width: 450px;
     height: 450px;
+    border-radius: 25px;
+}
+
+.producten{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 450px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
