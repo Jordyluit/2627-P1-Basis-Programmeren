@@ -26,23 +26,31 @@ main {
     width: 100%;
 }
 .card{
-    background-color: black;
+    /* background-color: black; */
     border-radius: 25px;
     padding: 10px;
     border-width: 650px;
+    
 }
 
 .card img{
-    width: 450px;
-    height: 450px;
+    width: 100%;
+    /* height: 450px; */
     border-radius: 25px;
 }
 
-.producten{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* align-items: flex-start; */
     height: 450px;
-    gap: 20px;
-    flex-wrap: wrap;
+    grid-column-gap: 20px;
+}
+
+.parent {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: repeat(7, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 }
