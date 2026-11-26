@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
     <title>Document</title>
   </head>
+  
   <body>
     <div class="menubalk">
   <header><h1> RedBullCarsWebshop</h1><img src="images/RedBullLogo.png" alt="Red Bull Logo" width="150"></header>
